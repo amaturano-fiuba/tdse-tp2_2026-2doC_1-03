@@ -83,3 +83,19 @@ La macro `LOGGER_INFO()` formatea cadenas con `snprintf` y envía datos vía *se
 
 * **Impacto en `WCET`**: Las operaciones de I/O bloqueantes y el *semihosting* detienen el procesador para comunicarse con el depurador. Esto causa un pico masivo en el `LET` de la tarea, actualizando el `WCET` con un valor extremadamente alto.
 * **Impacto en `g_app_runtime_us`**: Como esta variable suma el `LET` de todas las tareas, el retraso del logger incrementará significativamente el tiempo total de ejecución. Esto puede causar que el sistema exceda el tiempo disponible (1 ms) antes del siguiente evento del temporizador, rompiendo el determinismo del sistema.
+
+## Registro de valores de `task_dta_list[index]` (Paso 13)
+
+Valores obtenidos luego de varias ejecuciones de `app_update()`:
+
+| Tarea (index) | NOE (Número de ejecuciones) | LET (Último tiempo) [us] | BCET (Mejor tiempo) [us] | WCET (Peor tiempo) [us] |
+| :--- | :---: | :---: | :---: | :---: |
+| **task_dta_list[0] (Sensor)** | 15478 | 4 | 4 | 5 |
+| **task_dta_list[1] (System)** | 15478 | 3 | 3 | 5 |
+| **task_dta_list[2] (Actuator)** | 15478 | 2 | 2 | 4 |
+
+**Aclaración de unidades de medida:**
+* **NOE** (*Number of Executions*): Cantidad de ejecuciones (sin unidad / entero).
+* **LET** (*Last Execution Time*): Microsegundos ($\mu s$).
+* **BCET** (*Best-Case Execution Time*): Microsegundos ($\mu s$).
+* **WCET** (*Worst-Case Execution Time*): Microsegundos ($\mu s$).
