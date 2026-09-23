@@ -36,7 +36,7 @@
 El proyecto `tdse-tp2_01-model_integration` mantiene la siguiente organización de archivos:
 
 ```text
-tdse-tp2_01-model_integration/
+tdse-tp2_01-model_integration/ 
 ├── Core/
 │   ├── Inc/               # Encabezados generados por CubeMX (main.h, stm32f1xx_it.h)
 │   └── Src/               # Código fuente base (main.c, stm32f1xx_it.c, system_stm32f1xx.c)
