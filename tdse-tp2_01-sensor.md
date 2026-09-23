@@ -72,3 +72,17 @@ tdse-tp2_01-model_integration/
 ## 7. Próximos Pasos
 * Implementar las lecturas periódicas del sensor dentro del bucle principal de la aplicación (`app/`).
 * Realizar pruebas de calibración y procesamiento de datos del sensor.
+
+
+## Registro de métricas de rendimiento de `task_dta_list[0]` (Paso 04)
+
+Valores obtenidos para la tarea de sensor (`task_sensor`) luego de probar la máquina de estados con el botón B1:
+
+| Métrica | Valor Obtenido | Unidad / Descripción |
+| :--- | :---: | :--- |
+| **NOE** (*Number Of Executions*) | 53484 | Cantidad de ejecuciones (entero) |
+| **LET** (*Last Execution Time*) | 4 | Microsegundos ($\mu s$) |
+| **BCET** (*Best-Case Execution Time*) | 4 | Microsegundos ($\mu s$) |
+| **WCET** (*Worst-Case Execution Time*) | 6 | Microsegundos ($\mu s$) |
+
+> **Nota:** El valor de WCET refleja el incremento de tiempo de procesamiento introducido por la lógica de anti-rebote por software (4 estados y temporizador `tick`).
