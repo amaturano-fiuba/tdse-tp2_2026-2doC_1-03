@@ -48,3 +48,25 @@ tdse-tp2_03-model_integration/
 ├── tdse-tp2_03-model_integration.cfg     # Script de configuración OpenOCD / ST-LINK
 ├── tdse-tp2_03-model_integration.launch  # Perfil de depuración GDB
 └── tdse-tp2_03-system.md                 # Registro de la entrega (este documento)
+
+| Type | Value |
+| --- | --- |
+| volatile uint32_t | 0 |
+| uint32_t | 16 |
+| task_dta_t [3] | [3] |
+| task_dta_t | {...} |
+| uint32_t | 110765 |
+| uint32_t | 9 |
+| uint32_t | 9 |
+| uint32_t | 11 |
+| task_dta_t | {...} |
+| task_dta_t | {...} |
+| task_sensor_dta_t [3] | [3] |
+| task_system_dta_t [1] | [1] |
+| task_system_dta_t | {...} |
+| uint32_t | 0 |
+| task_system_st_t | ST_SYS_WAIT_FOR_CAR_LEAVES |
+| task_system_ev_t | EV_SYS_IDLE |
+| _Bool | true |
+| task_actuator_dta_t [] | [0] |
+| event_task_system_queue_t | {...} |
