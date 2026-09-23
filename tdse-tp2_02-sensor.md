@@ -48,3 +48,19 @@ tdse-tp2_02-model_integration/
 ├── tdse-tp2_02-model_integration.cfg     # Script de configuración OpenOCD / ST-LINK
 ├── tdse-tp2_02-model_integration.launch  # Perfil de depuración GDB
 └── tdse-tp2_02-sensor.md                 # Registro de la entrega (este documento)
+
+## Registro de métricas de rendimiento y verificación de 3 sensores (Paso 04)
+
+### 1. Verificación de ejecución simultánea
+Se verificó mediante *Live Expressions* el funcionamiento en paralelo de las 3 instancias del modelo de sensor (`task_sensor_dta_list[0]`, `task_sensor_dta_list[1]` y `task_sensor_dta_list[2]`). Cada FSM responde de manera independiente a las entradas de hardware configuradas (`BTN_A`, `BTN_B` y `BTN_C`) manteniendo sus estados (`ST_BTN_UP`, `ST_BTN_FALLING`, `ST_BTN_DOWN`, `ST_BTN_RISING`) y temporizadores de anti-rebote.
+
+### 2. Métricas de rendimiento de la tarea de sensor (`task_dta_list[0]`)
+
+| Métrica | Valor Obtenido | Unidad / Descripción |
+| :--- | :---: | :--- |
+| **NOE** (*Number Of Executions*) | 66212 | Cantidad de ejecuciones (entero) |
+| **LET** (*Last Execution Time*) | 9 | Microsegundos ($\mu s$) |
+| **BCET** (*Best-Case Execution Time*) | 9 | Microsegundos ($\mu s$) |
+| **WCET** (*Worst-Case Execution Time*) | 11 | Microsegundos ($\mu s$) |
+
+> **Análisis de rendimiento:** El tiempo de peor caso de ejecución (WCET) pasó de $6\,\mu s$ (registrado en la Actividad 01 con 1 solo sensor) a $11\,\mu s$. Este incremento es proporcional al procesamiento secuencial de las 3 máquinas de estado durante cada llamada a `task_sensor_update()`.
